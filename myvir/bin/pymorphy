@@ -1,0 +1,4 @@
+#!/home/klchnv/RusCorp/myvir/bin/python3.6
+import sys
+from pymorphy2 import cli
+sys.exit(cli.main())
