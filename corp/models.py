@@ -62,7 +62,7 @@ class Header(models.Model):
         verbose_name = "Заголовок корпуса"
         verbose_name_plural = "Заголовки корпусов"
     id_corp = models.AutoField(primary_key=True, verbose_name="ID корпуса")
-    id_user     = models.ForeignKey('auth.User', db_column='id', verbose_name="ID юзера", on_delete = None, default=0)
+    id_user     = models.ForeignKey('auth.User', db_column='id_user', verbose_name="ID юзера", on_delete = None)
     #Автоинкрементное поле. primary_key - первичный ключ таблицы, verbose_name - тестовое описание
     name = models.CharField(max_length=100, verbose_name="Название корпуса")
     #Текстовое поле. max_length - длина.

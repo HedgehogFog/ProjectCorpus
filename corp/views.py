@@ -6,6 +6,10 @@ from django.contrib.auth.decorators import login_required
 from .models import Header, Item
 from .forms import RegisterForm, HeaderForm, ItemForm
 from .graph import make_graph, calc_freq
+import os
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 #Экстракторы ключевых слов
 from natasha import (
     NamesExtractor,
@@ -36,6 +40,11 @@ def get_extractor( extract_type ):
 
 
 # Create your views here.
+
+# def register(request):
+#     exec (open(MEDIA_ROOT + '/addons/test/hello.py').read())
+#     return render_to_response('registration/register.html', args)
+
 
 #Регистрация пользователя
 def register(request):
@@ -89,6 +98,7 @@ def header_create(request):
         form = HeaderForm(request.POST)
         if form.is_valid():
             header = form.save(commit=False)
+            header.id_user =  auth.get_user(request)
             #Сохранение объекта заголовка корпуса
             header.save()
             return HttpResponseRedirect("/content/")
@@ -190,3 +200,4 @@ def item_analyze(request, id_item=None):
         next = request.GET['next']
     #Рендерим страницу для просмотра результата анализа
         return render(request, 'corp/item_analyze.html', { 'title': item.title, 'result': result, 'next': next })
+
