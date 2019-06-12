@@ -6,7 +6,6 @@ from django.contrib.auth.decorators import login_required
 from .models import Header, Item, Addon
 from .forms import RegisterForm, HeaderForm, ItemForm, AddonForm, ItemAuthorForm, ItemThemeForm
 from .graph import make_graph, calc_freq
-from .dataAddon import DataAddon
 from .utils import exec_with_return
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -200,6 +199,10 @@ def analyze_select(request, id_item=None):
     addons = Addon.objects.all()
     return render(request, 'corp/analyze_select.html', { 'id_item': id_item, 'next': next, 'addons': addons })
 
+@login_required
+def analyze_execute(request, id_item=None, id_addon=None):
+    return item_analyze(request, id_item=id_item, id_addon=id_addon)
+
 #Добавление аддона @ジ
 @login_required
 def addon_append(request, id_item=None, id_corp=None, id_user=None):
@@ -225,13 +228,16 @@ def addon_view_info(request, id_addon):
 
 #Выполнение анализа
 @login_required
-def item_analyze(request, id_item=None):
-    item = get_object_or_404(Item, id_item=id_item)
+def item_analyze(request, id_item=None, id_addon=None):
+    item  = get_object_or_404(Item, id_item =id_item)
+    addon = get_object_or_404(Addon,id_addon=id_addon)
     file = open(item.file.path, "r")
+    # print(request.POST[2])
     text = file.read()
     params = {}
     params["text"] = text
-    result = exec_with_return(open(MEDIA_ROOT + '/addons/test/hello.py').read(), params)
+    print(addon.file_main)
+    result = exec_with_return(open(MEDIA_ROOT + '/' + str(addon.file_main)).read(), params)
 
     #Получение выбранного экстрактора (radio-button)
     addon = request.POST.get("addon")

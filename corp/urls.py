@@ -32,6 +32,8 @@ urlpatterns = [
     path('addons/view/<id_addon>', views.addon_view_info, name='addon_view_info'),
     #Выбор вида анализа
     path('content/item/analyze_select/<id_item>', views.analyze_select, name ='analyze_select'),
+    #Выбор вида анализа
+    path('content/item/analyze_execute/<id_item>/<id_addon>', views.analyze_execute, name ='analyze_execute'),
     #Просмотр результатов анализа
     path('content/item/analyze/<id_item>', views.item_analyze, name ='analyze'),
 ]
