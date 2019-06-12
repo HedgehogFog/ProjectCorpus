@@ -8,7 +8,9 @@
         {{ form.as_p }}
         <div class="form-group">
           <button type="submit" class="btn btn-success">Сохранить</button>
-          <a href="{% url 'header_content' id_corp=id_corp %}" class="btn btn-secondary">Отмена</a>
+          <a href="{% url 'item_create_theme'  id_corp=id_corp %}" class="btn btn-info">Это не тема </a>
+          <a href="{% url 'item_create_author' id_corp=id_corp %}" class="btn btn-warning">Моего автора нет в списке </a>
+          <a href="{% url 'header_content' id_corp=id_corp %}" class="btn btn-secondary">Назад</a>
         </div>
     </form>
 {% endblock %}
