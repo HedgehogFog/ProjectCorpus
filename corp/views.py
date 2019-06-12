@@ -6,23 +6,23 @@ from django.contrib.auth.decorators import login_required
 from .models import Header, Item, Addon
 from .forms import RegisterForm, HeaderForm, ItemForm, AddonForm
 from .graph import make_graph, calc_freq
-# from .dataAddon import DataAddon
+ from .dataAddon import DataAddon
 from .utils import exec_with_return
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 #Экстракторы ключевых слов
-# from natasha import (
-#     NamesExtractor,
-#     LocationExtractor,
-#     DatesExtractor,
-#     MoneyExtractor,
-# )
+from natasha import (
+    NamesExtractor,
+    LocationExtractor,
+    DatesExtractor,
+    MoneyExtractor,
+)
 #Форматирование в JSON
-# from natasha.markup import (
-#     format_json
-# )
+from natasha.markup import (
+    format_json
+)
 import copy
 
 #Получение нужного экстрактора
