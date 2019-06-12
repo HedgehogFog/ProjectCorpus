@@ -7,7 +7,7 @@
       <h2 align="center">Аддоны</h2>
   <h4 align="center">{{corp_name}}</h4>
   <br>
-  <a href="{% url 'addon_append' id_user=id_user %}?next={{ request.get_full_path|urlencode }}">
+  <a href="{% url 'addon_append'  %}?next={{ request.get_full_path|urlencode }}">
     <button type="button" class="btn btn-primary">Добавить</button>
   </a>
   <a href="{% url 'home' %}">
