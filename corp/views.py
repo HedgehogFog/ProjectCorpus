@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Header, Item
 from .forms import RegisterForm, HeaderForm, ItemForm
 from .graph import make_graph, calc_freq
+from .dataAddon import DataAddon
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -172,36 +173,41 @@ def item_analyze(request, id_item=None):
     item = get_object_or_404(Item, id_item=id_item)
     file = open(item.file.path, "r")
     text = file.read()
+    data = DataAddon
+    data.text = text
+    exec (open(MEDIA_ROOT + '/addons/test/hello.py').read())
 
     #Получение выбранного экстрактора (radio-button)
-    extract_type = request.POST.get('extract')
-    if extract_type == 'graph':
-        wordgraph = make_graph(text)
-        word_count = calc_freq(wordgraph)
-        result = format_json(word_count)
-        return render(request, 'corp/item_analyze.html', { 'title': item.title, 'result':result})#, 'next': next })
-    else:
-    #Получение нужного экстрактора
-        extractor = get_extractor( extract_type )
-    #Выполнение анализа текста с помощью экстрактора
-        matches = extractor(text)
-        spans = [_.span for _ in matches]
-        facts = [_.fact.as_json for _ in matches]
-    #Выделяем уникальные ключевые слова и подсчитываем количество повторов
-        uniq_facts = []
-        uniq_count = []
-        for x in facts:
-            if x not in uniq_facts:
-                uniq_facts.append(x)
-                i = uniq_facts.index(x)
-                uniq_count.append(copy.deepcopy(uniq_facts[i]))
-                uniq_count[i]['count'] = 1
-            else:
-                i = uniq_facts.index(x)
-                uniq_count[i]['count'] += 1
-    #Форматируем результат в JSON
-        result = format_json(uniq_count)
-        next = request.GET['next']
-    #Рендерим страницу для просмотра результата анализа
-        return render(request, 'corp/item_analyze.html', { 'title': item.title, 'result': result, 'next': next })
+    addon = request.POST.get("addon")
+
+    # extract_type = request.POST.get('extract')
+    # if extract_type == 'graph':
+    #     wordgraph = make_graph(text)
+    #     word_count = calc_freq(wordgraph)
+    #     result = format_json(word_count)
+    #     return render(request, 'corp/item_analyze.html', { 'title': item.title, 'result':result})#, 'next': next })
+    # else:
+    # #Получение нужного экстрактора
+    #     extractor = get_extractor( extract_type )
+    # #Выполнение анализа текста с помощью экстрактора
+    #     matches = extractor(text)
+    #     spans = [_.span for _ in matches]
+    #     facts = [_.fact.as_json for _ in matches]
+    # #Выделяем уникальные ключевые слова и подсчитываем количество повторов
+    #     uniq_facts = []
+    #     uniq_count = []
+    #     for x in facts:
+    #         if x not in uniq_facts:
+    #             uniq_facts.append(x)
+    #             i = uniq_facts.index(x)
+    #             uniq_count.append(copy.deepcopy(uniq_facts[i]))
+    #             uniq_count[i]['count'] = 1
+    #         else:
+    #             i = uniq_facts.index(x)
+    #             uniq_count[i]['count'] += 1
+    # #Форматируем результат в JSON
+    #     result = format_json(uniq_count)
+    #     next = request.GET['next']
+    # #Рендерим страницу для просмотра результата анализа
+    return render(request, 'corp/item_analyze.html', { 'title': item.title, 'result': result, 'next': next })
 
