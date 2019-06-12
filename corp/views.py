@@ -3,8 +3,8 @@ from django.shortcuts import render, render_to_response, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
-from .models import Header, Item
-from .forms import RegisterForm, HeaderForm, ItemForm
+from .models import Header, Item, Addon
+from .forms import RegisterForm, HeaderForm, ItemForm, AddonForm
 from .graph import make_graph, calc_freq
 from .dataAddon import DataAddon
 from .utils import exec_with_return
@@ -166,7 +166,36 @@ def analyze_select(request, id_item=None):
     if request.method == "POST":
         return item_analyze(request, id_item=id_item)
     next = request.GET['next']
-    return render(request, 'corp/analyze_select.html', { 'id_item': id_item, 'next': next })
+    # @ジ Получение ID пользователя
+    id_user = auth.get_user(request)
+    # @ジ Получение списка аддонов доступных пользователю по ID пользователя
+    addons = Addon.objects.filter(id_user=id_user)
+
+    return render(request, 'corp/analyze_select.html', { 'id_item': id_item, 'next': next,
+                                                         'addons': addons, 'id_user': id_user})
+
+#Добавление аддона @ジ
+@login_required
+def addon_append(request, id_item=None, id_corp=None, id_user=None):
+    if request.method == "POST":
+        form = AddonForm(request.POST, request.FILES)
+        if form.is_valid():
+
+            item = form.save(commit=False)
+            # @ジ получение ID пользователя
+            item.id_user = auth.get_user(request)
+            item.save()
+
+
+            next = request.GET['next']
+            return HttpResponseRedirect(next)
+    else:
+        form = AddonForm()
+    return render(request, 'corp/addon_append.html', {'form': form, 'id_corp': id_corp, 'id_user': id_user, 'id_item':id_item})
+
+# информация об аддоне @ジ
+def addon_view_info(request, id_addon):
+    return render(request, 'corp/base.html')
 
 #Выполнение анализа
 @login_required

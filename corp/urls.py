@@ -22,6 +22,10 @@ urlpatterns = [
     path('content/item/delete/<id_item>', views.item_delete, name ='item_delete'),
     #Просмотр текста
     path('content/item/view_file/<id_item>', views.item_view_file, name ='item_view_file'),
+    # @ジ Установка добавление аддона
+    path('addons/append/<id_user>', views.addon_append, name='addon_append'),
+    # @ジ Информация об аддноне !still in development!
+    path('addons/view/<id_addon>', views.addon_view_info, name='addon_view_info'),
     #Выбор вида анализа
     path('content/item/analyze_select/<id_item>', views.analyze_select, name ='analyze_select'),
     #Просмотр результатов анализа
