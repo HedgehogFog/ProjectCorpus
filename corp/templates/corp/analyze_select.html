@@ -2,9 +2,52 @@
 {% load widget_tweaks %}
 
 {% block content %}
-<a href="{{ next }}">
-  <button type="button" class="btn btn-warning">Назад</button>
-</a>
+ {#  Some place  #}
+
+{#  some text maybe  #}
+
+{#  Addon content  #}
+      <h2 align="center">Аддоны пользователя</h2>
+  <h4 align="center">{{corp_name}}</h4>
+  <br>
+  <a href="{% url 'addon_append' id_user=id_user %}?next={{ request.get_full_path|urlencode }}">
+    <button type="button" class="btn btn-primary">Добавить</button>
+  </a>
+  <a href="{% url 'home' %}">
+    <button type="button" class="btn btn-warning">Назад</button>
+  </a>
+  {% if addons %}
+  <table class="table table-hover">
+    <tr>
+      <th class="text-center">Название аддона</th>
+       <th class="text-center">Полная информация</th>
+      {% if user.is_superuser %}
+      <th class="text-center"></th>
+      {% endif %}
+    </tr>
+    {% for addon in addons %}
+    <tr>
+      <td class="text-center">{{addon.name}}</td>
+      <td class="text-center">
+        <a href="{% url 'addon_view_info' id_addon=addon.id_addon %}?next={{ request.get_full_path|urlencode }}">
+          <button type="button" class="btn btn-info">Просмотр информации</button>
+        </a>
+      </td>
+      {% if user.is_superuser %}
+      <td class="text-center">
+        <a href="{% url 'addon_delete' id_addon=addon.id_addon %}?next={{ request.get_full_path|urlencode }}" >
+          <button type="button" class="btn btn-danger">Удалить</button>
+        </a>
+      </td>
+      {% endif %}
+    </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+
+
+{#  Analizer content  #}
+
 <br>
 <h2 align="left">Виды анализа текста</h2>
 
