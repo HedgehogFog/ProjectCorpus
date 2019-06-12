@@ -128,7 +128,9 @@ def item_create(request, id_corp=None):
             #И сохраняем его
             item.corpName = header.name
             item.save()
+            #@ hedgehog добавляем запись в таблицу связей
             item.id_corp.add(header)
+            item.save()
 
             next = request.GET['next']
             return HttpResponseRedirect(next)

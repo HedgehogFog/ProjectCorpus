@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1f6571a-af9c-4b4d-9be1-a053a956efbc" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/corp/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/corp/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/corp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/corp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/corp/templates/corp/header_content.html" beforeDir="false" afterPath="$PROJECT_DIR$/corp/templates/corp/header_content.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/corp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/corp/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
@@ -19,7 +18,35 @@
         <entry file="file://$PROJECT_DIR$/corp/models.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="310">
-              <caret line="72" column="22" lean-forward="true" selection-start-line="72" selection-start-column="22" selection-end-line="72" selection-end-column="22" />
+              <caret line="72" column="22" selection-start-line="72" selection-start-column="22" selection-end-line="72" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/corp/templates/corp/item_view_file.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/corp/templates/corp/corp_content.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/corp/templates/corp/base.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="12" lean-forward="true" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/corp/templates/corp/header_content.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="399">
+              <caret line="30" column="45" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -45,11 +72,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/corp/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="131" selection-start-line="131" selection-end-line="131" />
+            <state relative-caret-position="-529">
+              <caret line="117" lean-forward="true" selection-start-line="117" selection-end-line="117" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
@@ -66,7 +93,7 @@
         <entry file="file://$PROJECT_DIR$/ruscorp/settings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="678">
-              <caret line="126" column="22" lean-forward="true" selection-start-line="126" selection-end-line="127" />
+              <caret line="126" column="22" selection-start-line="126" selection-end-line="127" />
             </state>
           </provider>
         </entry>
@@ -96,6 +123,7 @@
         <option value="$PROJECT_DIR$/corp/forms.py" />
         <option value="$PROJECT_DIR$/corp/models.py" />
         <option value="$PROJECT_DIR$/corp/views.py" />
+        <option value="$PROJECT_DIR$/corp/templates/corp/header_content.html" />
       </list>
     </option>
   </component>
@@ -120,6 +148,19 @@
             <path>
               <item name="djKursach" type="b2602c69:ProjectViewProjectNode" />
               <item name="djKursach" type="462c0819:PsiDirectoryNode" />
+              <item name="corp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="djKursach" type="b2602c69:ProjectViewProjectNode" />
+              <item name="djKursach" type="462c0819:PsiDirectoryNode" />
+              <item name="corp" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="djKursach" type="b2602c69:ProjectViewProjectNode" />
+              <item name="djKursach" type="462c0819:PsiDirectoryNode" />
+              <item name="corp" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
               <item name="corp" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -200,12 +241,12 @@
       <option name="presentableId" value="Default" />
       <updated>1560011207965</updated>
       <workItem from="1560015216382" duration="19999000" />
-      <workItem from="1560218735808" duration="9236000" />
+      <workItem from="1560218735808" duration="10988000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29235000" />
+    <option name="totallyTimeSpent" value="30987000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="0" width="1928" height="1048" extended-state="6" />
@@ -251,17 +292,34 @@
     <entry file="file://$PROJECT_DIR$/ruscorp/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="678">
-          <caret line="126" column="22" lean-forward="true" selection-start-line="126" selection-end-line="127" />
+          <caret line="126" column="22" selection-start-line="126" selection-end-line="127" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/myvir/lib/python3.6/site-packages/setuptools/command/easy_install.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="293">
+          <caret line="1617" column="8" selection-start-line="1617" selection-start-column="8" selection-end-line="1617" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/corp/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-529">
+          <caret line="117" lean-forward="true" selection-start-line="117" selection-end-line="117" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ruscorp/urls.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/myvir/lib/python3.6/site-packages/setuptools/command/easy_install.py">
+    <entry file="file://$PROJECT_DIR$/media/addons/test/hello.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="293">
-          <caret line="1617" column="8" selection-start-line="1617" selection-start-column="8" selection-end-line="1617" selection-end-column="8" />
+        <state>
+          <caret column="12" selection-start-column="12" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -275,27 +333,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/media/addons/test/hello.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="12" selection-start-column="12" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/corp/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="310">
-          <caret line="72" column="22" lean-forward="true" selection-start-line="72" selection-start-column="22" selection-end-line="72" selection-end-column="22" />
+          <caret line="72" column="22" selection-start-line="72" selection-start-column="22" selection-end-line="72" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/corp/views.py">
+    <entry file="file://$PROJECT_DIR$/corp/templates/corp/item_view_file.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/corp/templates/corp/corp_content.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/corp/templates/corp/base.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="131" selection-start-line="131" selection-end-line="131" />
-          <folding>
-            <element signature="e#0#51#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="285">
+          <caret line="19" column="12" lean-forward="true" selection-start-line="19" selection-start-column="12" selection-end-line="19" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/corp/templates/corp/header_content.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="399">
+          <caret line="30" column="45" selection-start-line="30" selection-start-column="45" selection-end-line="30" selection-end-column="45" />
         </state>
       </provider>
     </entry>
