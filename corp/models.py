@@ -27,6 +27,10 @@ class Theme(models.Model):
     def __str__(self):
         return self.theme;
 
+def addon_main_path(instance, filename):
+    # @ジ
+    return 'addons/{0}/main/{1}'.format(instance.name, filename)
+
 def addon_manual_path(instance, filename):
     return 'addons/{0}/manual/{1}'.format(instance.name, filename)
 
@@ -49,6 +53,7 @@ class Addon(models.Model):
     name            = models.CharField(max_length=100, verbose_name="Название аддона")
     description     = models.CharField(max_length=255, verbose_name="Краткое описание аддона")
 
+    file_main = models.FileField(upload_to=addon_main_path, verbose_name="Файл-драйвер") # @ジ
     file_manual     = models.FileField(upload_to=addon_manual_path,     verbose_name="Инструкция")
     file_description= models.FileField(upload_to=addon_descr_path,      verbose_name="Описание файлов")
     file_example    = models.FileField(upload_to=addon_example_path,    verbose_name="Примеры использования")

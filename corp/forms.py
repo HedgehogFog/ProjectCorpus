@@ -24,4 +24,5 @@ class ItemForm(forms.ModelForm):
 class AddonForm(forms.ModelForm):
     class Meta:
         model = Addon
-        fields = ('name', 'description', 'file_manual', 'file_manual', 'file_example')
+        fields = ('name', 'description', 'file_main', 'file_manual', 'file_manual', 'file_example')
+

@@ -6,23 +6,23 @@ from django.contrib.auth.decorators import login_required
 from .models import Header, Item, Addon
 from .forms import RegisterForm, HeaderForm, ItemForm, AddonForm
 from .graph import make_graph, calc_freq
-from .dataAddon import DataAddon
+# from .dataAddon import DataAddon
 from .utils import exec_with_return
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 #Экстракторы ключевых слов
-from natasha import (
-    NamesExtractor,
-    LocationExtractor,
-    DatesExtractor,
-    MoneyExtractor,
-)
+# from natasha import (
+#     NamesExtractor,
+#     LocationExtractor,
+#     DatesExtractor,
+#     MoneyExtractor,
+# )
 #Форматирование в JSON
-from natasha.markup import (
-    format_json
-)
+# from natasha.markup import (
+#     format_json
+# )
 import copy
 
 #Получение нужного экстрактора
@@ -77,12 +77,17 @@ def corp_home(request):
     #Иначе отображаем стартовую страницу
         return render( request, 'corp/base.html')
 
-#Список копрусов
+#Список копрусов и @ジ аддонов
 def corp_content(request):
+    # @ジ Получение ID пользователя
+    id_user = auth.get_user(request)
     #Получение всех заголовков
     headers = Header.objects.all()
+    # @ジ Получение всех аддонов
+    addons = Addon.objects.all()
+
     #Рендер страницы с корпусами и передача списка заголовков
-    return render(request, 'corp/corp_content.html', {'headers':headers})
+    return render(request, 'corp/corp_content.html', {'headers':headers, 'addons':addons, 'id_user':id_user})
 
 #Тексты в корпусе
 def header_content(request, id_corp=None):
@@ -166,13 +171,7 @@ def analyze_select(request, id_item=None):
     if request.method == "POST":
         return item_analyze(request, id_item=id_item)
     next = request.GET['next']
-    # @ジ Получение ID пользователя
-    id_user = auth.get_user(request)
-    # @ジ Получение списка аддонов доступных пользователю по ID пользователя
-    addons = Addon.objects.filter(id_user=id_user)
-
-    return render(request, 'corp/analyze_select.html', { 'id_item': id_item, 'next': next,
-                                                         'addons': addons, 'id_user': id_user})
+    return render(request, 'corp/analyze_select.html', { 'id_item': id_item, 'next': next })
 
 #Добавление аддона @ジ
 @login_required
