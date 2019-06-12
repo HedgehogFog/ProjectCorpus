@@ -1,6 +1,50 @@
 {% extends 'corp/base.html' %}
 
 {% block content %}
+
+{#ADDON LIST#}
+
+      <h2 align="center">Аддоны</h2>
+  <h4 align="center">{{corp_name}}</h4>
+  <br>
+  <a href="{% url 'addon_append' id_user=id_user %}?next={{ request.get_full_path|urlencode }}">
+    <button type="button" class="btn btn-primary">Добавить</button>
+  </a>
+  <a href="{% url 'home' %}">
+    <button type="button" class="btn btn-warning">Назад</button>
+  </a>
+  {% if addons %}
+  <table class="table table-hover">
+    <tr>
+      <th class="text-center">Название аддона</th>
+       <th class="text-center">Полная информация</th>
+      {% if user.is_superuser %}
+      <th class="text-center"></th>
+      {% endif %}
+    </tr>
+    {% for addon in addons %}
+    <tr>
+        {#   Тут должн быть ссылка на запуск модуля/ или выобр текстов для последующей обратки ?передать addon.name по url ?     #}
+        <td class="text-center">  <a href="{% url 'home' %}">{{addon.name}}</a> </td>
+      <td class="text-center">
+        <a href="{% url 'addon_view_info' id_addon=addon.id_addon %}?next={{ request.get_full_path|urlencode }}">
+          <button type="button" class="btn btn-info">Просмотр информации</button>
+        </a>
+      </td>
+      {% if user.is_superuser %}
+      <td class="text-center">
+        <a href="{% url 'addon_delete' id_addon=addon.id_addon %}?next={{ request.get_full_path|urlencode }}" >
+          <button type="button" class="btn btn-danger">Удалить</button>
+        </a>
+      </td>
+      {% endif %}
+    </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+
+
+{#CORPUS LIST#}
   <h2 align="center">Список корпусов</h2>
   <br>
   <a href="{% url 'header_create' %}">
