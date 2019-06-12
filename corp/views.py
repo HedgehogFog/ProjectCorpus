@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from .models import Header, Item, Addon
 from .forms import RegisterForm, HeaderForm, ItemForm, AddonForm
 from .graph import make_graph, calc_freq
- from .dataAddon import DataAddon
+from .dataAddon import DataAddon
 from .utils import exec_with_return
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -87,7 +87,7 @@ def corp_content(request):
     addons = Addon.objects.all()
 
     #Рендер страницы с корпусами и передача списка заголовков
-    return render(request, 'corp/corp_content.html', {'headers':headers, 'addons':addons, 'id_user':id_user})
+    return render(request, 'corp/corp_content.html', {'headers':headers, 'addons':addons})
 
 #Тексты в корпусе
 def header_content(request, id_corp=None):
@@ -165,13 +165,17 @@ def item_delete(request, id_item=None):
     item.delete()
     return HttpResponseRedirect(next)
 
-#Выбор анализа
+#Выбор анализа #ジ#
 @login_required
 def analyze_select(request, id_item=None):
     if request.method == "POST":
         return item_analyze(request, id_item=id_item)
     next = request.GET['next']
-    return render(request, 'corp/analyze_select.html', { 'id_item': id_item, 'next': next })
+    # @ジ Получение ID пользователя
+    id_user = auth.get_user(request)
+    # @ジ Получение списка аддонов доступных пользователю по ID пользователя
+    addons = Addon.objects.all()
+    return render(request, 'corp/analyze_select.html', { 'id_item': id_item, 'next': next, 'addons': addons })
 
 #Добавление аддона @ジ
 @login_required
@@ -190,7 +194,7 @@ def addon_append(request, id_item=None, id_corp=None, id_user=None):
             return HttpResponseRedirect(next)
     else:
         form = AddonForm()
-    return render(request, 'corp/addon_append.html', {'form': form, 'id_corp': id_corp, 'id_user': id_user, 'id_item':id_item})
+    return render(request, 'corp/addon_append.html', {'form': form, 'id_corp': id_corp, 'id_item':id_item})
 
 # информация об аддоне @ジ
 def addon_view_info(request, id_addon):
