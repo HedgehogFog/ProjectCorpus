@@ -7,6 +7,7 @@ from .models import Header, Item
 from .forms import RegisterForm, HeaderForm, ItemForm
 from .graph import make_graph, calc_freq
 from .dataAddon import DataAddon
+from .utils import exec_with_return
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -173,9 +174,9 @@ def item_analyze(request, id_item=None):
     item = get_object_or_404(Item, id_item=id_item)
     file = open(item.file.path, "r")
     text = file.read()
-    data = DataAddon
-    data.text = text
-    exec (open(MEDIA_ROOT + '/addons/test/hello.py').read())
+    params = {}
+    params["text"] = text
+    result = exec_with_return(open(MEDIA_ROOT + '/addons/test/hello.py').read(), params)
 
     #Получение выбранного экстрактора (radio-button)
     addon = request.POST.get("addon")

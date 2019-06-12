@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1f6571a-af9c-4b4d-9be1-a053a956efbc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/corp/dataAddon.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/corp/utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/corp/dataAddon.py" beforeDir="false" afterPath="$PROJECT_DIR$/corp/dataAddon.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/corp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/corp/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/media/addons/test/hello.py" beforeDir="false" afterPath="$PROJECT_DIR$/media/addons/test/hello.py" afterDir="false" />
     </list>
@@ -20,23 +21,14 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/corp/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="175" selection-start-line="175" selection-end-line="176" selection-end-column="20" />
+            <state relative-caret-position="280">
+              <caret line="182" lean-forward="true" selection-start-line="182" selection-end-line="182" />
               <folding>
                 <element signature="e#0#51#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/ruscorp/settings.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1294">
-              <caret line="126" column="22" selection-start-line="126" selection-end-line="127" />
             </state>
           </provider>
         </entry>
@@ -45,7 +37,7 @@
         <entry file="file://$PROJECT_DIR$/corp/dataAddon.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="90">
-              <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+              <caret line="6" column="17" lean-forward="true" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -53,22 +45,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/media/addons/test/hello.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="16" lean-forward="true" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+            <state relative-caret-position="210">
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/corp/templates/corp/item_analyze.html">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/corp/templates/corp/header_content.html">
+        <entry file="file://$PROJECT_DIR$/corp/utils.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="34" column="55" selection-start-line="34" selection-start-column="55" selection-end-line="34" selection-end-column="55" />
+            <state relative-caret-position="315">
+              <caret line="21" column="54" selection-start-line="21" selection-start-column="54" selection-end-line="21" selection-end-column="54" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -86,6 +76,7 @@
     <findStrings>
       <find>id_user</find>
       <find>get_user</find>
+      <find>bui</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -98,9 +89,10 @@
         <option value="$PROJECT_DIR$/corp/models.py" />
         <option value="$PROJECT_DIR$/corp/templates/corp/header_content.html" />
         <option value="$PROJECT_DIR$/corp/data.py" />
-        <option value="$PROJECT_DIR$/corp/views.py" />
-        <option value="$PROJECT_DIR$/media/addons/test/hello.py" />
         <option value="$PROJECT_DIR$/corp/dataAddon.py" />
+        <option value="$PROJECT_DIR$/corp/utils.py" />
+        <option value="$PROJECT_DIR$/media/addons/test/hello.py" />
+        <option value="$PROJECT_DIR$/corp/views.py" />
       </list>
     </option>
   </component>
@@ -219,12 +211,12 @@
       <option name="presentableId" value="Default" />
       <updated>1560011207965</updated>
       <workItem from="1560015216382" duration="19999000" />
-      <workItem from="1560218735808" duration="15732000" />
+      <workItem from="1560218735808" duration="20592000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="35731000" />
+    <option name="totallyTimeSpent" value="40591000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="0" width="1928" height="1048" extended-state="6" />
@@ -311,9 +303,6 @@
     <entry file="file://$PROJECT_DIR$/corp/templates/corp/item_view_file.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/corp/templates/corp/item_analyze.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/corp/templates/corp/header_content.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="484">
@@ -321,37 +310,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/corp/templates/corp/header_create.html">
+    <entry file="file://$PROJECT_DIR$/ruscorp/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="975">
+          <caret line="65" column="61" lean-forward="true" selection-start-line="65" selection-start-column="61" selection-end-line="65" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/corp/templates/corp/item_analyze.html">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/corp/views.py">
+    <entry file="file://$PROJECT_DIR$/corp/utils.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="175" selection-start-line="175" selection-end-line="176" selection-end-column="20" />
+        <state relative-caret-position="315">
+          <caret line="21" column="54" selection-start-line="21" selection-start-column="54" selection-end-line="21" selection-end-column="54" />
           <folding>
-            <element signature="e#0#51#0" expanded="true" />
+            <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/corp/templates/corp/header_create.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/media/addons/test/hello.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="16" lean-forward="true" selection-start-line="5" selection-start-column="16" selection-end-line="5" selection-end-column="16" />
+        <state relative-caret-position="210">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/corp/dataAddon.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
-          <caret line="6" column="16" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+          <caret line="6" column="17" lean-forward="true" selection-start-line="6" selection-start-column="17" selection-end-line="6" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ruscorp/settings.py">
+    <entry file="file://$PROJECT_DIR$/corp/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1294">
-          <caret line="126" column="22" selection-start-line="126" selection-end-line="127" />
+        <state relative-caret-position="280">
+          <caret line="182" lean-forward="true" selection-start-line="182" selection-end-line="182" />
+          <folding>
+            <element signature="e#0#51#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
