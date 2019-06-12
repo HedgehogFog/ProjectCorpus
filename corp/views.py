@@ -4,7 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from .models import Header, Item, Addon
-from .forms import RegisterForm, HeaderForm, ItemForm, AddonForm
+from .forms import RegisterForm, HeaderForm, ItemForm, AddonForm, ItemAuthorForm, ItemThemeForm
 from .graph import make_graph, calc_freq
 from .dataAddon import DataAddon
 from .utils import exec_with_return
@@ -144,6 +144,29 @@ def item_create(request, id_corp=None):
     else:
         form = ItemForm()
     return render(request, 'corp/item_create.html', {'form': form, 'id_corp': id_corp})
+# создание автора
+def item_create_author(request, id_corp=None):
+    if request.method == "POST":
+        form = ItemAuthorForm(request.POST, request.FILES)
+        if form.is_valid():
+            item = form.save(commit=True)
+
+            return HttpResponseRedirect('/content/item/create/{}'.format(id_corp))
+    else:
+        form = ItemAuthorForm()
+    return render(request, 'corp/author_theme_create.html', {'form': form, 'id_corp':id_corp})
+
+# создание темы
+def item_create_theme(request, id_corp=None):
+    if request.method == "POST":
+        form = ItemThemeForm(request.POST, request.FILES)
+        if form.is_valid():
+            item = form.save(commit=True)
+
+            return HttpResponseRedirect('/content/item/create/{}'.format(id_corp))
+    else:
+        form = ItemThemeForm()
+    return render(request, 'corp/author_theme_create.html', {'form': form, 'id_corp': id_corp})
 
 #Просмотр текста
 @login_required

@@ -18,6 +18,10 @@ urlpatterns = [
     path('content/header/<id_corp>', views.header_content, name ='header_content'),
     #Загрузка текста
     path('content/item/create/<id_corp>', views.item_create, name ='item_create'),
+    # Указать нового автора
+    path('content/item/create/author/<id_corp>', views.item_create_author, name='item_create_author'),
+    # Указать новую тему
+    path('content/item/create/theme/<id_corp>', views.item_create_theme, name='item_create_theme'),
     #Удаление текста
     path('content/item/delete/<id_item>', views.item_delete, name ='item_delete'),
     #Просмотр текста
