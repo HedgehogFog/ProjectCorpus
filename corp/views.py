@@ -125,9 +125,11 @@ def item_create(request, id_corp=None):
             item = form.save(commit=False)
             header = Header.objects.get(id_corp=id_corp)
             #При создании нового текста указываем объект заголовка для связи
-            item.id_corp = header
             #И сохраняем его
+            item.corpName = header.name
             item.save()
+            item.id_corp.add(header)
+
             next = request.GET['next']
             return HttpResponseRedirect(next)
     else:

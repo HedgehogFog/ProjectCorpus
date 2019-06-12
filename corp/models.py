@@ -75,7 +75,7 @@ class Header(models.Model):
 
 def texts_path(instance, filename):
     #Функция для получения пути файла для сохранения
-    return 'texts/{0}/{1}'.format(instance.id_corp, filename)
+    return 'texts/{0}/{1}'.format(instance.corpName, filename)
 
 
 #Объект "Позиция"
@@ -85,12 +85,13 @@ class Item(models.Model):
         verbose_name_plural = "Позиции корпусов"
     id_item = models.AutoField(primary_key=True, verbose_name="ID текста")
     # id_corp = models.ForeignKey(Header, db_column='id_corp', verbose_name="ID корпуса", on_delete=models.CASCADE)
-    id_corp  = models.ManyToManyField(Header, db_column='id_corp')
-    id_theme = models.ForeignKey(Theme, db_column='id_theme', verbose_name="ID темы", on_delete = None, default = 0)
+    corpName  = ""
+    id_corp   = models.ManyToManyField(Header, db_column='id_corp')
+    id_theme  = models.ForeignKey(Theme, db_column='id_theme',   verbose_name="ID темы",     on_delete = None, default = 0)
+    id_author = models.ForeignKey(Author, db_column='id_author', verbose_name="Автор текста",on_delete = None, default = 0)
 
     #Поле внешнего ключа. Ссылается на модель Header, столбец "id_corp"(db_column). Задано каскадное удаление.
     title = models.CharField(max_length=100, verbose_name="Название текста")
-    author = models.CharField(max_length=100, verbose_name="Автор текста")
     date = models.DateField(verbose_name="Дата текста")
     #Поле типа дата
     created_date = models.DateTimeField(auto_now_add=True, verbose_name="Дата загрузки")

@@ -18,5 +18,5 @@ class HeaderForm(forms.ModelForm):
 class ItemForm(forms.ModelForm):
     class Meta:
         model = Item
-        fields = ('title', 'author', 'id_theme', 'date', 'file')
+        fields = ('title', 'id_author', 'id_theme', 'date', 'file')
         widgets = { 'date': forms.widgets.DateInput(attrs={'type': 'date'})}
