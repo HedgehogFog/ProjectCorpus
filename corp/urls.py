@@ -19,6 +19,10 @@ urlpatterns = [
     path('content/header/delete/<id_corp>', views.header_delete, name ='header_delete'),
     #Просмотр содержимого корпуса
     path('content/header/<id_corp>', views.header_content, name ='header_content'),
+    # Добавление текста
+    path('content/item/append/<id_corp>', views.item_append, name='item_append'),#№№№№№№№№№№№
+    # Добавление выбранного текста
+    path('content/item/append/<id_corp>/<id_item>', views.item_append, name='item_append'),  # №№№№№№№№№№№
     #Загрузка текста
     path('content/item/create/<id_corp>', views.item_create, name ='item_create'),
     # Указать нового автора
@@ -31,7 +35,7 @@ urlpatterns = [
     path('content/item/view_file/<id_item>', views.item_view_file, name ='item_view_file'),
     # @ジ Установка добавление аддона
     path('addons/append/', views.addon_append, name='addon_append'),
-    # @ジ Информация об аддноне !still in development!
+    # @ジ Информация об аддноне
     path('addons/view/<id_addon>', views.addon_view_info, name='addon_view_info'),
     #Выбор вида анализа
     path('content/item/analyze_select/<id_item>', views.analyze_select, name ='analyze_select'),

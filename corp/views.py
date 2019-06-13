@@ -121,6 +121,34 @@ def header_delete(request, id_corp=None):
     #И перенаправление на страницу со списком корпусов
     return HttpResponseRedirect("/content/")
 
+#Добавление текста
+@login_required
+def item_append(request, id_corp=None, id_item=None):
+    # @ジ название текста которое выводится в сообщении
+    # об успешном добавлении
+    added_text = str()
+    # @ジ если передан id_item
+    if id_item:
+        # @ジ получим объект текста
+        item = Item.objects.get(id_item=id_item)
+        # @ジ получим объект корпуса
+        header = Header.objects.get(id_corp=id_corp)
+        # @ジ ассоциируем item.id_corp к объектом header
+        item.id_corp.add(header)
+        item.save()
+        # @ジ заполенние текста
+        added_text = str(item.title)
+
+
+    # @ジ получим все тексты
+    items_all = Item.objects.all()
+    # @ジ получим тексты принадлежащие текущему корпусу
+    items_curr = Item.objects.filter(id_corp=id_corp)
+    # @ジ найдем тексты не принадлежащие текущему корпусу
+    items_new = items_all.difference(items_curr)
+
+    return render(request, 'corp/item_append.html', {'items_new': items_new, 'id_corp': id_corp, 'added_text': added_text})
+
 #Загрузка текста
 @login_required
 def item_create(request, id_corp=None):
@@ -142,6 +170,7 @@ def item_create(request, id_corp=None):
     else:
         form = ItemForm()
     return render(request, 'corp/item_create.html', {'form': form, 'id_corp': id_corp})
+
 # создание автора
 def item_create_author(request, id_corp=None):
     if request.method == "POST":
@@ -186,7 +215,7 @@ def item_delete(request, id_item=None):
     item.delete()
     return HttpResponseRedirect(next)
 
-#Выбор анализа #ジ#
+#Выбор анализа
 @login_required
 def analyze_select(request, id_item=None):
     if request.method == "POST":
