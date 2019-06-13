@@ -1,0 +1,26 @@
+{% extends 'corp/base.html' %}
+
+{% block content %}
+{% if addon %}
+    <h1>{{addon.name}}</h1>
+
+    <p>{{addon.description}}</p>
+
+        <div>
+            <a href="/media/{{addon.file_main }}">Main</a>
+        </div>
+        <div>
+            <a href="/media/{{addon.file_manual }}">Manual </a>
+        </div>
+        <div>
+            <a href="/media/{{addon.file_example }}">Examples </a>
+        </div>
+
+
+        <a href="{% url 'home' %}" class="btn btn-secondary">На главную</a>
+
+
+
+{% endif %}
+
+{% endblock %}

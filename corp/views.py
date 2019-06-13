@@ -1,4 +1,5 @@
 from django.template.context_processors import csrf
+from django.conf import settings
 from django.shortcuts import render, render_to_response, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import auth
@@ -8,8 +9,6 @@ from .forms import RegisterForm, HeaderForm, ItemForm, AddonForm, ItemAuthorForm
 from .graph import make_graph, calc_freq
 from .utils import exec_with_return
 import os
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 #Экстракторы ключевых слов
 from natasha import (
@@ -224,7 +223,8 @@ def addon_append(request, id_item=None, id_corp=None, id_user=None):
 
 # информация об аддоне @ジ
 def addon_view_info(request, id_addon):
-    return render(request, 'corp/base.html')
+    addon = get_object_or_404(Addon, id_addon=id_addon)
+    return render(request, 'corp/addon_view.html', {'addon': addon})
 
 #Выполнение анализа
 @login_required
@@ -237,10 +237,9 @@ def item_analyze(request, id_item=None, id_addon=None):
     params = {}
     params["text"] = text
     print(addon.file_main)
-    result = exec_with_return(open(MEDIA_ROOT + '/' + str(addon.file_main)).read(), params)
+    result = exec_with_return(open(settings.MEDIA_ROOT + '/' + str(addon.file_main)).read(), params)
 
     #Получение выбранного экстрактора (radio-button)
-    addon = request.POST.get("addon")
 
     # extract_type = request.POST.get('extract')
     # if extract_type == 'graph':

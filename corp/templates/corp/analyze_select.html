@@ -30,6 +30,12 @@
           <button type="button" class="btn btn-info">Просмотр информации</button>
         </a>
       </td>
+      <td class="text-center">
+        <a href="{% url 'analyze_execute' id_item=id_item id_addon=addon.id_addon %}">
+          {% csrf_token %}
+          <button type="s" class="btn btn-info">Анализировать</button>
+        </a>
+      </td>
       {% if user.is_superuser %}
       <td class="text-center">
         <a href="{% url 'addon_delete' id_addon=addon.id_addon %}?next={{ request.get_full_path|urlencode }}" >
@@ -40,38 +46,39 @@
     </tr>
     {% endfor %}
   </table>
+
   {% endif %}
 
-{# ANALIZER PLACE   #}
-<br>
-<h2 align="left">Виды анализа текста</h2>
+<!--{# ANALIZER PLACE   #}-->
+<!--<br>-->
+<!--<h2 align="left">Виды анализа текста</h2>-->
 
-<form method="post">
-  <ul id="radio-list">
-    <li>
-    <input type="radio" value="name" id="rb-1" name="extract" CHECKED>
-    <label for="rb-1">Экстрактор имён</label>
-  </li>
-  <li>
-    <input type="radio" value="location" id="rb-2" name="extract">
-    <label for="rb-2">Экстрактор местоположений</label>
-  </li>
-  <li>
-    <input type="radio" value="date" id="rb-3" name="extract">
-    <label for="rb-3">Экстрактор дат</label>
-  </li>
-  <li>
-    <input type="radio" value="money" id="rb-4" name="extract">
-    <label for="rb-4">Экстрактор денежных сумм</label>
-  </li>
-  <li>
-    <input type="radio" value="graph" id="rb-5" name="extract">
-    <label for="rb-5">Частотный анализ слов</label>
-  </li>
-  </ul>
-  <a href="{% url 'analyze' id_item=id_item %}">
-    {% csrf_token %}
-    <input type="submit" class="btn btn-success" value="Запуск анализа"></input>
-  </a>
-</form>
-{% endblock %}
+<!--<form method="post">-->
+<!--  <ul id="radio-list">-->
+<!--    <li>-->
+<!--    <input type="radio" value="name" id="rb-1" name="extract" CHECKED>-->
+<!--    <label for="rb-1">Экстрактор имён</label>-->
+<!--  </li>-->
+<!--  <li>-->
+<!--    <input type="radio" value="location" id="rb-2" name="extract">-->
+<!--    <label for="rb-2">Экстрактор местоположений</label>-->
+<!--  </li>-->
+<!--  <li>-->
+<!--    <input type="radio" value="date" id="rb-3" name="extract">-->
+<!--    <label for="rb-3">Экстрактор дат</label>-->
+<!--  </li>-->
+<!--  <li>-->
+<!--    <input type="radio" value="money" id="rb-4" name="extract">-->
+<!--    <label for="rb-4">Экстрактор денежных сумм</label>-->
+<!--  </li>-->
+<!--  <li>-->
+<!--    <input type="radio" value="graph" id="rb-5" name="extract">-->
+<!--    <label for="rb-5">Частотный анализ слов</label>-->
+<!--  </li>-->
+<!--  </ul>-->
+<!--  <a href="{% url 'analyze' id_item=id_item %}">-->
+<!--    {% csrf_token %}-->
+<!--    <input type="submit" class="btn btn-success" value="Запуск анализа"></input>-->
+<!--  </a>-->
+<!--</form>-->
+<!--{% endblock %}-->

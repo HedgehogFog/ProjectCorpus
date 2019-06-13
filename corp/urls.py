@@ -1,4 +1,7 @@
 from django.urls import include, path
+from django.conf.urls.static import static
+from django.conf import settings
+
 from . import views
 
 urlpatterns = [
@@ -37,3 +40,5 @@ urlpatterns = [
     #Просмотр результатов анализа
     path('content/item/analyze/<id_item>', views.item_analyze, name ='analyze'),
 ]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
