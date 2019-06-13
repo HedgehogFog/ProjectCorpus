@@ -4,8 +4,8 @@
   <h2 align="center">Тексты в корпусе</h2>
   <h4 align="center">{{corp_name}}</h4>
   <br>
-  <a href="{% url 'item_create' id_corp=id_corp %}?next={{ request.get_full_path|urlencode }}">
-    <button type="button" class="btn btn-primary">Создать</button>
+  <a href="{% url 'item_append' id_corp=id_corp %}?next={{ request.get_full_path|urlencode }}">
+    <button type="button" class="btn btn-primary">Добавить</button>
   </a>
   <a href="{% url 'home' %}">
     <button type="button" class="btn btn-warning">Назад</button>

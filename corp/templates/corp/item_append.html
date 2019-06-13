@@ -1,0 +1,49 @@
+{% extends 'corp/base.html' %}
+
+{% block content %}
+  <h2 align="center">Тексты</h2>
+  <h4 align="center">{{corp_name}}</h4>
+  <br>
+  <a href="{% url 'item_create' id_corp=id_corp %}?next={{ request.get_full_path|urlencode }}">
+    <button type="button" class="btn btn-warning">Загрузить новый текст</button>
+  </a>
+  <a href="{% url 'header_content' id_corp=id_corp %}">
+    <button type="button" class="btn btn-secondary">Назад</button>
+  </a>
+ {% if added_text  %}
+     <style>
+        #green_text {color: #218838;}
+     </style>
+     <p>
+     <p  id="green_text"> Текст {{added_text}} был успешно добавлен </p>
+ {% endif %}
+  {% if items_new %}
+  <table class="table table-hover">
+    <tr>
+      <th class="text-center">Название текста</th>
+      <th class="text-center">Автор текста</th>
+      <th class="text-center">Тема текста</th>
+      <th class="text-center">Дата текста</th>
+      <th class="text-center">Дата загрузки</th>
+       <th class="text-center">Добавить текст</th>
+    </tr>
+    {% for item in items_new %}
+    <tr>
+
+      <td class="text-center">{{item.title}}</td>
+      <td class="text-center">{{item.id_author}}</td>
+      <td class="text-center">{{item.id_theme}}</td>
+      <td class="text-center">{{item.date}}</td>
+      <td class="text-center">{{item.created_date}}</td>
+
+      <td class="text-center">
+
+        <a href="{% url 'item_append' id_corp=id_corp id_item=item.id_item %}">
+            <button type="button" class="btn btn-success">Добавить</button>
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% endif %}
+{% endblock %}
