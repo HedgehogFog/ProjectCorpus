@@ -2,7 +2,17 @@
 {% load widget_tweaks %}
 
 {% block content %}
-    <h2>Новый текст</h2>
+    <h2>Новый аддон</h2>
+    <p>
+      Требования к аддону:
+    </p>
+    <p>
+        1) последней строкой должны идти выводимые данные в отформатированном виде
+    </p>
+    <p>
+        2) анализируемый текст можно получить через: locals()["text"]
+    </p>
+    <
     <form method="POST" enctype="multipart/form-data" class="post-form">
         {% csrf_token %}
         {{ form.as_p }}
